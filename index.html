@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hint Ladder — AP Physics Tutor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grid-backdrop" aria-hidden="true"></div>
+
+<div class="app-shell">
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">⌐⌐⌐</span>
+      <div class="brand-text">
+        <h1>The Hint Ladder</h1>
+        <p>An AP Physics tutor that won't just give you the answer</p>
+      </div>
+    </div>
+    <a href="tutor.html" class="primary-btn small-btn">Launch tutor</a>
+  </header>
+
+  <main class="home-main">
+
+    <section class="hero notebook-card">
+      <div class="card-tab">Welcome</div>
+      <h2>Homework help that makes you think first.</h2>
+      <p class="hint-copy large">
+        Upload a photo of your homework or type it in. Attempt it yourself, and this tutor
+        walks you up a five-tier hint ladder — each hint personalized to your exact problem
+        and your exact attempt — before ever handing you the full solution.
+      </p>
+      <a href="tutor.html" class="primary-btn">Launch tutor</a>
+    </section>
+
+    <section class="how-it-works">
+      <div class="notebook-card step-card">
+        <div class="card-tab">Step 1</div>
+        <h3>Share the problem</h3>
+        <p>Type it in, or upload a photo/PDF of your homework. Pick the AP Physics unit, or let the tutor detect it.</p>
+      </div>
+      <div class="notebook-card step-card">
+        <div class="card-tab">Step 2</div>
+        <h3>Attempt it — five times</h3>
+        <p>Every attempt gets a hint personalized to your specific reasoning, escalating from a broad conceptual nudge to a near-complete scaffold.</p>
+      </div>
+      <div class="notebook-card step-card">
+        <div class="card-tab">Step 3</div>
+        <h3>Earn the full solution</h3>
+        <p>After five honest attempts, you get the complete correct solution — and a direct comparison to where your own reasoning matched or diverged.</p>
+      </div>
+    </section>
+
+    <section class="notebook-card setup-note">
+      <div class="card-tab">Before you start</div>
+      <h3>You'll need your own Anthropic API key</h3>
+      <p class="hint-copy">
+        This tutor calls Claude directly from your browser — there's no server involved, so it
+        runs entirely from this page. On the tutor page, paste your API key into the Settings
+        box once; it's saved only in your browser's local storage and sent straight to Anthropic,
+        never anywhere else. Get a key at
+        <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a>.
+      </p>
+      <p class="micro-copy">
+        Because the key lives in your browser, don't share your deployed link publicly — anyone
+        with it could use your key. Setting a spend limit on the key in your Anthropic console is
+        a good extra safeguard.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Built on the Modular Hint Ladder System — personalized hints, minimal AI spend.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

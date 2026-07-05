@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutor — The Hint Ladder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grid-backdrop" aria-hidden="true"></div>
+
+<div class="app-shell">
+
+  <header class="site-header">
+    <div class="brand">
+      <a href="index.html" class="brand-mark-link"><span class="brand-mark">⌐⌐⌐</span></a>
+      <div class="brand-text">
+        <h1>The Hint Ladder</h1>
+        <p>Personalized hints, minimal AI spend</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button id="settingsBtn" class="ghost-btn">Settings</button>
+      <button id="newProblemBtn" class="ghost-btn hidden">New problem</button>
+    </div>
+  </header>
+
+  <!-- SETTINGS PANEL -->
+  <div id="settingsPanel" class="notebook-card settings-panel hidden">
+    <div class="card-tab">Settings</div>
+    <h2>Your Anthropic API key</h2>
+    <p class="hint-copy">
+      Stored only in this browser's local storage. Sent directly to Anthropic with every request — never to any other server.
+      Get a key at <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a>.
+    </p>
+    <div class="key-row">
+      <input type="password" id="apiKeyInput" class="line-input" placeholder="sk-ant-...">
+      <button id="saveKeyBtn" class="primary-btn small-btn">Save</button>
+      <button id="clearKeyBtn" class="ghost-btn">Clear</button>
+    </div>
+    <p id="keyStatus" class="micro-copy"></p>
+  </div>
+
+  <main id="app">
+
+    <!-- SETUP SCREEN -->
+    <section id="setupScreen" class="screen">
+      <form id="setupForm" class="notebook-card setup-form">
+        <div class="card-tab">Step 1</div>
+        <h2>Set up your problem</h2>
+        <p class="hint-copy">Every hint is personalized to your exact problem and attempt using a light, cheap model. Only the final full solution (Tier 5) uses a stronger model — and only once per unique problem.</p>
+
+        <label class="field-label" for="unitSelect">AP Physics unit</label>
+        <select id="unitSelect" class="line-input">
+          <option value="">Choose a unit...</option>
+        </select>
+
+        <label class="field-label" for="problemText">Problem statement (type it, or upload a file below)</label>
+        <textarea id="problemText" class="ruled-textarea" rows="4" placeholder="Paste or type the homework problem here..."></textarea>
+
+        <label class="field-label">Or upload a photo / PDF of your homework</label>
+        <div class="file-drop" id="fileDrop">
+          <input type="file" id="fileInput" accept="image/*,application/pdf" hidden>
+          <button type="button" id="chooseFileBtn" class="ghost-btn">Choose file</button>
+          <span id="fileName" class="file-name">No file chosen</span>
+        </div>
+        <p class="micro-copy">If you upload a file without picking a unit, the tutor will detect it — a small AI call that runs once, before you start.</p>
+
+        <button type="submit" class="primary-btn full-width">Begin tutoring session</button>
+      </form>
+    </section>
+
+    <!-- TUTOR SCREEN -->
+    <section id="tutorScreen" class="screen hidden">
+      <div class="chat-layout">
+
+        <div class="chat-panel">
+          <div id="chatLog" class="chat-log" aria-live="polite"></div>
+
+          <form id="composerForm" class="composer">
+            <div class="composer-row">
+              <textarea id="messageInput" placeholder="Give your answer and your reasoning..." rows="1" required></textarea>
+              <button type="submit" class="send-btn" id="sendBtn" aria-label="Send message">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="ladder-rail">
+          <div class="notebook-card ladder-card">
+            <div class="card-tab">Live ladder</div>
+            <h2 id="ladderUnitName">Unit</h2>
+            <ol id="ladderRail" class="ladder-list live"></ol>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p id="usageFooter">Built on the Modular Hint Ladder System — cheap by design.</p>
+  </footer>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
